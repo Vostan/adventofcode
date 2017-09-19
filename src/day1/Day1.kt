@@ -3,14 +3,10 @@ package day1
 class Day1 {
 
     fun main(args: Array<String>) {
-
-        var init: Position = Position("N", 0, 0);
-
-        print(doMove(init, getData()).getDistance());
-
+        print(doMove(Position("N", 0, 0), getCordinates()).getDistance());
     }
 
-    fun doMove(position: Position, cords: List<String>): Position {
+    private fun doMove(position: Position, cords: List<String>): Position {
 
         if(cords.isEmpty()){
             return position;
@@ -36,7 +32,7 @@ class Day1 {
 
     }
 
-    fun moveEast(position: Position, steps: Int): Position {
+    private fun moveEast(position: Position, steps: Int): Position {
 
         position.direction = "E";
         position.x += steps;
@@ -44,7 +40,7 @@ class Day1 {
         return position;
     }
 
-    fun moveWest(position: Position, steps: Int): Position {
+    private fun moveWest(position: Position, steps: Int): Position {
 
         position.direction = "W";
         position.x -= steps;
@@ -52,7 +48,7 @@ class Day1 {
         return position;
     }
 
-    fun moveNorth(position: Position, steps: Int): Position {
+    private fun moveNorth(position: Position, steps: Int): Position {
 
         position.direction = "N";
         position.y += steps;
@@ -60,7 +56,7 @@ class Day1 {
         return position;
     }
 
-    fun moveSouth(position: Position, steps: Int): Position {
+    private fun moveSouth(position: Position, steps: Int): Position {
 
         position.direction = "S";
         position.y -= steps;
@@ -68,7 +64,7 @@ class Day1 {
         return position;
     }
 
-    fun getData(): List<String> {
+    private fun getCordinates(): List<String> {
         val input = "L4, R2, R4, L5, L3, L1, R4, R5, R1, R3, L3, L2, L2, R5, R1, L1, L2, R2, R2, L5, R5, R5, L2, R1, R2, L2, L4, L1, R5, R2, R1, R1, L2, L3, R2, L5, L186, L5, L3, R3, L5, R4, R2, L5, R1, R4, L1, L3, R3, R1, L1, R4, R2, L1, L4, R5, L1, R50, L4, R3, R78, R4, R2, L4, R3, L4, R4, L1, R5, L4, R1, L2, R3, L2, R5, R5, L4, L1, L2, R185, L5, R2, R1, L3, R4, L5, R2, R4, L3, R4, L2, L5, R1, R2, L2, L1, L2, R2, L2, R1, L5, L3, L4, L3, L4, L2, L5, L5, R2, L3, L4, R4, R4, R5, L4, L2, R4, L5, R3, R1, L1, R3, L2, R2, R1, R5, L4, R5, L3, R2, R3, R1, R4, L4, R1, R3, L5, L1, L3, R2, R1, R4, L4, R3, L3, R3, R2, L3, L3, R4, L2, R4, L3, L4, R5, R1, L1, R5, R3, R1, R3, R4, L1, R4, R3, R1, L5, L5, L4, R4, R3, L2, R1, R5, L3, R4, R5, L4, L5, R2";
 
         return input.split(", ");
