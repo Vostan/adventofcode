@@ -17,21 +17,28 @@ class Day2{
                     listOf(null, null, 'D', null, null)
             );
 
-            var x = 2;
-            var y = 0;
+            println(getCode(Pair(2, 0), numPAD2));
+        }
 
-            getInput().forEach{ i ->
-                i.forEach {move ->
-                        when(move){
-                            'U' -> if(x > 0 && numPAD2[x-1][y] != null) x--;
-                            'D' -> if(x < 4 && numPAD2[x+1][y] != null) x++;
-                            'L' -> if(y > 0 && numPAD2[x][y-1] != null) y--;
-                            'R' -> if(y < 4 && numPAD2[x][y+1] != null) y++;
-                        }
+        private fun getCode(initialPositon: Pair<Int, Int>, numPad: List<List<Any?>>): String {
+            var (x, y) = initialPositon;
+            var code: String = "";
+
+            getInput().forEach { i ->
+                i.forEach { move ->
+                    when (move) {
+                        'U' -> if (x > 0 && numPad[x - 1][y] != null) x--;
+                        'D' -> if (x < numPad.size - 1 && numPad[x + 1][y] != null) x++;
+                        'L' -> if (y > 0 && numPad[x][y - 1] != null) y--;
+                        'R' -> if (y < numPad.size - 1 && numPad[x][y + 1] != null) y++;
+                    }
 
                 }
-                println(numPAD2[x][y]);
+
+                code += numPad[x][y];
             }
+
+            return code;
         }
 
         fun getInput(): List<String>{
