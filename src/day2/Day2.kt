@@ -20,8 +20,8 @@ class Day2{
             println(getCode(Pair(2, 0), numPAD2));
         }
 
-        private fun getCode(initialPositon: Pair<Int, Int>, numPad: List<List<Any?>>): String {
-            var (x, y) = initialPositon;
+        private fun getCode(initialPosition: Pair<Int, Int>, numPad: List<List<Any?>>): String {
+            var (x, y) = initialPosition;
             var code: String = "";
 
             getInput().forEach { i ->
