@@ -1,7 +1,6 @@
 package day4
 
 import java.io.File
-import java.util.LinkedHashMap
 
 class Day4 {
     companion object {
@@ -10,12 +9,12 @@ class Day4 {
             val encryptedRooms: List<EncryptedRoom> = getInput();
 
             print(encryptedRooms
-                    .filter { isRearl(it) }
+                    .filter { isReal(it) }
                     .sumBy { it.id });
 
         }
 
-        private fun isRearl(encryptedRoom: EncryptedRoom):Boolean{
+        private fun isReal(encryptedRoom: EncryptedRoom):Boolean{
 
             var encryptionChecksum: String = "";
 
