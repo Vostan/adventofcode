@@ -18,7 +18,7 @@ class Day3 {
 
         private fun getInput(): List<List<Int>> {
             return File("./src/day3/input.txt").readText().split("\n")
-                    .map { line -> line.split(Regex("[ \t]+"))
+                    .map { it.split(Regex("[ \t]+"))
                             .filter { side -> side != "" }
                             .map { side -> side.toInt(); }
                     };
