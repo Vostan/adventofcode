@@ -8,10 +8,43 @@ class Day4 {
         fun main(args: Array<String>) {
             val encryptedRooms: List<EncryptedRoom> = getInput();
 
-            print(encryptedRooms
+            println(encryptedRooms
                     .filter { isReal(it) }
                     .sumBy { it.id });
 
+            val rooms = encryptedRooms
+                    .filter { isReal(it) }
+                    .map{ room -> EncryptedRoom(
+                            room.encryption.map {
+                                shift(it, room.id);
+                            }.joinToString(""),
+                            room.id,
+                            room.checksum);
+                        };
+
+            println(rooms.filter { it.encryption.contains("northpole object storage") }[0].id);
+
+
+        }
+
+        private fun shift(char: Char, by: Int): Char{
+            var charM = char;
+            var byM = by;
+
+            if (charM == ' '){
+                return ' ';
+            }
+
+            while (byM > 0) {
+                byM--;
+                if(charM == 'z'){
+                    charM = 'a';
+                } else {
+                    charM++;
+                }
+            }
+
+            return charM;
         }
 
         private fun isReal(encryptedRoom: EncryptedRoom):Boolean{
