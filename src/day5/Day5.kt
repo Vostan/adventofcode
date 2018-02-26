@@ -1,6 +1,8 @@
 package day5
 
+import com.sun.deploy.util.StringUtils
 import java.security.MessageDigest
+import kotlin.reflect.jvm.internal.impl.utils.StringsKt
 
 class Day5 {
     companion object {
@@ -11,18 +13,27 @@ class Day5 {
 
             var found = true;
             var start = 0;
-            var password = "";
+            val password = arrayListOf<Char>('#','#','#','#','#','#','#','#');
+
             while(found) {
 
                 val md5Hash = md5Second(doorId + (++start).toString());
 
                 if(md5Hash.substring(0,5) == "00000"){
-                    password += md5Hash.substring(5,6);
-                    println(password);
+                    val position:Int? = md5Hash[5].toString().toIntOrNull();
+                    val code:Char = md5Hash[6];
+
+                    if(position != null
+                            && position <= 7
+                            && password[position] == '#'){
+                        password[position] = code;
+                    }
+
+                    password.map { print(it.toLowerCase()) };
+                    println();
                 }
 
-                if (password.length == 8){
-                    println(password.toLowerCase());
+                if (!password.contains('#')){
                     found = false;
                 }
 
