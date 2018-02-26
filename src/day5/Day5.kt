@@ -12,7 +12,7 @@ class Day5 {
             var found = true;
             var start = 0;
             var password = "";
-            while (found){
+            while(found) {
 
                 val md5Hash = md5Second(doorId + (++start).toString());
 
