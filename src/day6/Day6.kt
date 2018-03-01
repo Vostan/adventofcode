@@ -8,8 +8,6 @@ class Day6 {
         @JvmStatic
         fun main(args: Array<String>) {
 
-            Regex("^(.{1})", RegexOption.MULTILINE).findAll(getInput()).toList().map { it.groupValues[0] };
-
             val reversedMatrix: ArrayList<ArrayList<String>> = arrayListOf();
 
             getInput().split("\n")
